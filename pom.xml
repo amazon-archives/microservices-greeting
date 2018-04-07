@@ -31,6 +31,8 @@
         <version.xray.sdk-core>1.2.1</version.xray.sdk-core>
         <version.jackson.core>2.9.4</version.jackson.core>
         <version.javax.inject>1</version.javax.inject>
+        <version.jackson.databind>2.8.4</version.jackson.databind>
+        <version.jackson.annotations>2.8.4</version.jackson.annotations>
     </properties>
 
     <dependencyManagement>
@@ -88,6 +90,16 @@
                 <version>${version.jackson.core}</version>
             </dependency>
             <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${version.jackson.databind}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${version.jackson.annotations}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.mashape.unirest</groupId>
                 <artifactId>unirest-java</artifactId>
                 <version>${version.unirest}</version>
@@ -135,6 +147,14 @@
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
         </dependency>
     </dependencies>
 
@@ -219,6 +239,14 @@
                 <dependency>
                     <groupId>org.glassfish.jersey.media</groupId>
                     <artifactId>jersey-media-json-jackson</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
                 </dependency>
             </dependencies>
             <build>
