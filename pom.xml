@@ -212,12 +212,9 @@
                                 <image>
                                     <name>${docker.name}</name>
                                     <build>
-                                        <from>fabric8/java-centos-openjdk8-jdk:1.4.0</from>
-                                        <env>
-                                            <AB_ENABLED>jolokia</AB_ENABLED>
-                                        </env>
+                                        <from>java:jre</from>
                                         <assembly>
-                                            <targetDir>/deployments</targetDir>
+                                            <targetDir>/</targetDir>
                                             <inline>
                                                 <fileSets>
                                                     <fileSet>
@@ -230,6 +227,9 @@
                                                 </fileSets>
                                             </inline>
                                         </assembly>
+                                        <cmd>
+                                            <shell>java -jar /${project.build.finalName}-swarm.jar</shell>
+                                        </cmd>
                                     </build>
                                 </image>
                             </images>
