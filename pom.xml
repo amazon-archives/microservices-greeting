@@ -212,7 +212,7 @@
                                 <image>
                                     <name>${docker.name}</name>
                                     <build>
-                                        <from>java:jre</from>
+                                        <from>openjdk:jre</from>
                                         <assembly>
                                             <targetDir>/</targetDir>
                                             <inline>
