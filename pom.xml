@@ -7,19 +7,17 @@
     <packaging>war</packaging>
 
     <properties>
-        <fabric8.generator.name>${docker.repo}/${project.build.finalName}:${docker.tag}</fabric8.generator.name>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.wildfly.swarm>2018.2.0</version.wildfly.swarm>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <docker.repo>arungupta</docker.repo>
         <docker.tag>latest</docker.tag>
+        <docker.name>${docker.repo}/${project.build.finalName}:${docker.tag}</docker.name>
         <greeting.host>localhost</greeting.host>
         <greeting.port>8081</greeting.port>
         <greeting.path>/resources/greeting</greeting.path>
-        <docker.push.username>arungupta</docker.push.username>
-        <docker.push.password>password</docker.push.password>
-        <version.fabric8.maven.plugin>3.5.30</version.fabric8.maven.plugin>
+        <version.docker.maven.plugin>0.25.0</version.docker.maven.plugin>
         <version.shade.maven.plugin>2.3</version.shade.maven.plugin>
         <version.lambda.java.core>1.2.0</version.lambda.java.core>
         <version.shade.maven.plugin>2.3</version.shade.maven.plugin>
@@ -207,8 +205,35 @@
                     </plugin>
                     <plugin>
                         <groupId>io.fabric8</groupId>
-                        <artifactId>fabric8-maven-plugin</artifactId>
-                        <version>${version.fabric8.maven.plugin}</version>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>${version.docker.maven.plugin}</version>
+                        <configuration>
+                            <images>
+                                <image>
+                                    <name>${docker.name}</name>
+                                    <build>
+                                        <from>openjdk:jre</from>
+                                        <assembly>
+                                            <targetDir>/</targetDir>
+                                            <inline>
+                                                <fileSets>
+                                                    <fileSet>
+                                                        <directory>${project.build.directory}</directory>
+                                                        <includes>
+                                                            <include>${project.build.finalName}-swarm.jar</include>
+                                                        </includes>
+                                                        <outputDirectory>.</outputDirectory>
+                                                    </fileSet>
+                                                </fileSets>
+                                            </inline>
+                                        </assembly>
+                                        <cmd>
+                                            <shell>java -jar /${project.build.finalName}-swarm.jar</shell>
+                                        </cmd>
+                                    </build>
+                                </image>
+                            </images>
+                        </configuration>
                         <executions>
                             <execution>
                                 <phase>package</phase>
