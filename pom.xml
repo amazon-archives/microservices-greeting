@@ -16,7 +16,7 @@
         <greeting.host>localhost</greeting.host>
         <greeting.port>8081</greeting.port>
         <greeting.path>/resources/greeting</greeting.path>
-        <version.docker.maven.plugin>0.25.1</version.docker.maven.plugin>
+        <version.docker.maven.plugin>0.25.2</version.docker.maven.plugin>
         <version.shade.maven.plugin>2.3</version.shade.maven.plugin>
         <version.lambda.java.core>1.2.0</version.lambda.java.core>
         <version.shade.maven.plugin>2.3</version.shade.maven.plugin>
