@@ -24,7 +24,7 @@ public class GreetingEndpoint {
         if (AWSXRay.getGlobalRecorder().getTraceEntity() != null)
             AWSXRay.getCurrentSegment().putAnnotation("parentId",
                     AWSXRay.getGlobalRecorder().getTraceEntity().getId());
-        String response = "Hello";
+        String response = "Howdy";
 
         return response;
     }
