@@ -8,6 +8,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.ServiceUnavailableException;
+import javax.ws.rs.ClientErrorException;
+import java.util.Random;
 
 /**
  * @author Arun Gupta
@@ -21,11 +24,21 @@ public class GreetingEndpoint {
     @Produces(MediaType.TEXT_PLAIN)
     public String get() {
         logger.info("get");
-        if (AWSXRay.getGlobalRecorder().getTraceEntity() != null)
-            AWSXRay.getCurrentSegment().putAnnotation("parentId",
-                    AWSXRay.getGlobalRecorder().getTraceEntity().getId());
+
+        // Generate timeout
+        Random rand = new Random();
+        int  n = rand.nextInt(200) + 1;
+
         String response = "Hello";
 
-        return response;
+        if (n <= 180) {
+          return response;
+        } else {
+          if ((n % 2) == 0) {
+            throw new ServiceUnavailableException(30L);
+          } else {
+            throw new ClientErrorException(403);
+          }
+        }
     }
 }
