@@ -1,9 +1,5 @@
 package org.aws.samples.compute.greeting;
 
-import com.amazonaws.xray.AWSXRay;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -18,13 +14,9 @@ import java.util.Random;
 @Path("greeting")
 public class GreetingEndpoint {
 
-    private static final Logger logger = LoggerFactory.getLogger(GreetingEndpoint.class);
-
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String get() {
-        logger.info("get");
-
         // Generate timeout
         Random rand = new Random();
         int  n = rand.nextInt(200) + 1;
