@@ -29,7 +29,7 @@
         <version.xray.sdk-core>1.2.1</version.xray.sdk-core>
         <version.jackson.core>2.9.4</version.jackson.core>
         <version.javax.inject>1</version.javax.inject>
-        <version.jackson.databind>2.8.4</version.jackson.databind>
+        <version.jackson.databind>2.9.10.5</version.jackson.databind>
         <version.jackson.annotations>2.8.4</version.jackson.annotations>
     </properties>
 
