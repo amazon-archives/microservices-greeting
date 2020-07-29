@@ -24,6 +24,7 @@ public class MyApplication extends Application {
         logger.info("getClasses");
         Set<Class<?>> classes = new java.util.HashSet<>();
         classes.add(GreetingEndpoint.class);
+        classes.add(HealthEndpoint.class);
         return classes;
     }
 
